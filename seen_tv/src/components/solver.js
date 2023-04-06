@@ -5,22 +5,6 @@ function Solver(boardArray) {
     // ASSUME the given sudoku board is valid
     initiate();
     return solve(boardArray);
-
-    function solve(board) {
-        // THIS FUNCTION WORKS.
-        // Board -> Board
-        // solves the given sudoku board
-        // ASSUME the given sudoku board is valid
-        if (solved(board)) {
-            return board
-        }
-        else {
-            const possibilities = nextBoards(board)
-            const validBoards = keepOnlyValid(possibilities)
-            return searchForSolution(validBoards)
-        }
-    }
-
     function initiate() {
         // null -> null
         // populate the board with whatever the user inputted
@@ -49,7 +33,20 @@ function Solver(boardArray) {
             updateBoard(answer, inputValid)
         }
     }
-
+    function solve(board) {
+        // THIS FUNCTION WORKS.
+        // Board -> Board
+        // solves the given sudoku board
+        // ASSUME the given sudoku board is valid
+        if (solved(board)) {
+            return board
+        }
+        else {
+            const possibilities = nextBoards(board)
+            const validBoards = keepOnlyValid(possibilities)
+            return searchForSolution(validBoards)
+        }
+    }
     function searchForSolution(boards) {
         // List[Board] -> Board or false
         // finds a valid solution to the sudoku problem
