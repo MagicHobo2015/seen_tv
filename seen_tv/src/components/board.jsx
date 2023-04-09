@@ -30,7 +30,6 @@ function Board() {
 			setArray(emptyArray);
 
 			square.value = null;
-
 		}
 	};
 
@@ -65,14 +64,20 @@ function Board() {
 
 	// this creates a new solver and attempts to solve the puzzle.
 	function handleSolve() {
+		// here we make the solver and give it the current array where empty spaces are Null
 		let solver = new Solver([...boardArray]);
-		solver.initiate();
-		if (solver.solved()) {
-			for (let i = 0; i < 81; i++) {
-				let square = document.getElementById(String(i));
-				setArray(solver.boardArray);
-				square.value = solver.boardArray[i];
-			}
+		solver.solve();
+		setArray(solver.boardArray);
+		fillBoard();
+	}
+
+	function fillBoard() {
+		for (let i = 0; i < 81; i++) {
+			let square = document.getElementById(String(i));
+			let row = Math.floor(square.id / 9);
+			let col = (square.id % 9);
+			square.value = boardArray[row][col];
+			console.log('filling something');
 		}
 	}
 
