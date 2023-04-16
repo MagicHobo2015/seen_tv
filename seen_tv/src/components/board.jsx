@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { ButtonGroup, Button } from "react-bootstrap";
-import Solver from "./solver.js";
+import solveSudoku from "./solver";
 
 
 function Board() {
@@ -50,7 +50,7 @@ function Board() {
 			let col = (id % 9);
 
 			// this is where the value is set in the array
-			copy[row][col] = attemptedValue;
+			copy[row][col] = parseInt(attemptedValue);
 			setArray(copy);
 			// this is where the value is set to the contents of the array
 			e.target.value = boardArray[row][col];
@@ -65,9 +65,8 @@ function Board() {
 	// this creates a new solver and attempts to solve the puzzle.
 	function handleSolve() {
 		// here we make the solver and give it the current array where empty spaces are Null
-		let solver = new Solver([...boardArray]);
-		solver.solve();
-		setArray(solver.boardArray);
+		
+		console.log(solveSudoku(boardArray));
 		fillBoard();
 	}
 
@@ -77,7 +76,6 @@ function Board() {
 			let row = Math.floor(square.id / 9);
 			let col = (square.id % 9);
 			square.value = boardArray[row][col];
-			console.log('filling something');
 		}
 	}
 
