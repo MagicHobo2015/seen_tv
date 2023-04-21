@@ -1,8 +1,9 @@
 import React from "react";
+import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
-import "./QuoteContainer.css";
+import "./quoteContainer.css";
 
 export default class QuoteContainer extends React.Component {
   constructor(props) {
@@ -59,9 +60,9 @@ export default class QuoteContainer extends React.Component {
             </a>
           </div>
           <div className="second-group">
-            <button className="cta" onClick={this.handleQuote} id="new-quote">
+            <Button className="Button" onClick={this.handleQuote} id="new-quote">
               New quote
-            </button>
+            </Button>
           </div>
         </div>
       </div>
